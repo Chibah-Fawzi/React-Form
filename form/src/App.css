@@ -1,0 +1,14 @@
+body {
+  background-color: #8BC6EC;
+  background-image: linear-gradient(105deg, #8BC6EC 0%, #9599E2 100%);
+}
+
+.App {
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 40px;
+}
+
