@@ -1,14 +1,51 @@
 body {
-  background-color: #8BC6EC;
-  background-image: linear-gradient(105deg, #8BC6EC 0%, #9599E2 100%);
+background-color: #b8c6db;
+background-image: linear-gradient(315deg, #4981d4 0%, #c7d7f1 74%);
+  
 }
 
 .App {
   text-align: center;
-  width: fit-content;
+  width: 50%;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 40px;
   padding: 40px;
 }
 
+.title {
+  margin-bottom: 80px;
+  margin-top: -30px;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 3em;
+  letter-spacing: -2px;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  text-transform: uppercase;
+
+}
+
+.btn {
+  border: none;
+  border: none;
+  background: #404040 !important;
+  color: #ffffff !important;
+  font-weight: 100;
+  padding: 20px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  letter-spacing: 3px;
+}
+
+.btn:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  background: #ffffff !important;
+  letter-spacing: 5px;
+  background: none;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
+  }

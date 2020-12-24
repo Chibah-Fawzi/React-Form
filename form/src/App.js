@@ -1,5 +1,5 @@
 import './App.css';
-import { Button, Form, Col, } from 'react-bootstrap';
+import { Form, Col, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 
@@ -9,52 +9,62 @@ function App() {
   const [countries, setCountries] = useState([])
 
   useEffect(() => {
-
-    fetch("https://wft-geo-db.p.rapidapi.com/v1/geo/countries", {
-      "method": "GET",
+    fetch('countries.json', {
       "headers": {
-        "x-rapidapi-key": "0bb09cdf1bmsh361db85aa7ca200p100ca4jsn7ac7b626f54f",
-        "x-rapidapi-host": "wft-geo-db.p.rapidapi.com"
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
-    }).then(res => setCountries(res))
-  });
+    }).then(response => response.json())
+      .then((data) => {
+        setCountries([...data])
+        console.log(data)
+      })
+  }, []);
 
-
+  const services = ["First Service", "Second Service", "Third Service", "Fourth Service"];
   return (
     <div className="App">
+      <h1 className="title">Inscription form</h1>
       <Form className="container">
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control required type="email" placeholder="Enter email" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control required minlength="6" type="password" placeholder="Password" />
           </Form.Group>
         </Form.Row>
 
         <Form.Group controlId="formGridAddress1">
           <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
+          <Form.Control placeholder="Insert your adress name" />
         </Form.Group>
 
         <Form.Group controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
+          <Form.Label>Type of service: </Form.Label>
+          <Form.Control as="select" defaultValue="Choose...">
+            {services.map((e) => (
+              <option className="services">
+                {e}
+              </option>
+            ))}
+          </Form.Control>
         </Form.Group>
 
         <Form.Row>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Country</Form.Label>
             <Form.Control as="select" defaultValue="Choose...">
-              {Object.keys(countries).map((country, index) => (
+              {countries.map((country, index) => (
                 <option
                   key={index}
                   value={country.name}
                 >
                   {country.name}
+
                 </option>
               ))}
             </Form.Control>
@@ -62,22 +72,19 @@ function App() {
 
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City</Form.Label>
-            <Form.Control />
+            <Form.Control required />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
             <Form.Label>Zip</Form.Label>
-            <Form.Control />
+            <Form.Control required />
           </Form.Group>
         </Form.Row>
 
-        <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
+        <button className="btn" type="submit">Submit</button>
+        {/* <Button className="btn" variant="primary" type="submit">
           Submit
-        </Button>
+        </Button> */}
       </Form>
     </div>
   );
